@@ -84,6 +84,7 @@ Unterteilung in:
 
 
 ## Execution Environment
+- Verhalten eines RISC-V Programms ist abhängig vom Execution Environment in dem es läuft
 - Execution Environment Interface (EEI) definiert:
 	- initialen Programmzustand
 	- Anzahl und Art der Harts (Hardware Threads) samt ihrer Privilege Modi
@@ -97,4 +98,9 @@ Unterteilung in:
 - Speicher-*Wort*: 32 bits
 - zirkulärer Speicher, d.h. Byte an Adresse $2^{XLEN} - 1$ ist angrenzend zu Byte an Adresse 0
 - alle Adressberechnungen werden folglich modulo $2^{XLEN}$ durchgeführt
+- Mapping von Hardware Resourcen in den Adressraum eines Harts durch Execution Environment
+- Teil des Adressraums von Harts kann sein:
+	1. leer
+	2. Hauptspeicherelemente
+	3. I/O-Geräte
 
