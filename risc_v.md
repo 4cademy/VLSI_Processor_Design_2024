@@ -5,7 +5,7 @@ Es soll Folgendes realisiert werden:
 
 ## RISC-V Instruction Set
 Unterteilung in:
-- das [[#Base Integer Instruction Set]] und
+- das Base Integer Instruction Set und
 - ein Set an optionalen Extensions (M, A, F, ...)
 ### Base Integer Instruction Set
 - auch bezeichnet als "**RV32I**" bzw. "**RV64I**"
@@ -23,7 +23,7 @@ Unterteilung in:
 ## RISC-V Register File
 - bezeichnet die in Menge der in RISC-V benutzten Register
 - **Unterteilung** in:
-	- [[#Integer Registers]]
+	- Integer Registers
 	- Floating-Point Registers (nur vorhanden für implementierte F- oder D-Extension)
 ### Integer Registers
 - 32 Stck. in 32-Bit, 32 Bit breit
