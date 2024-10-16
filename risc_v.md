@@ -12,9 +12,14 @@ Unterteilung in:
 ### Base Integer Instruction Set
 - auch bezeichnet als "**RV32I**" bzw. "**RV64I**"
 - für general-purpose computing
+- sorgfältig limitiertes minimales Instruktionsset
+- besteht aus folgenden Instruktionsarten:
+	- integer computational
+	- integer loads
+	- integer stores
+	- control flow
 
 ### Instruktionsformate
-
 | Typ    | Beschreibung                                  |
 | ------ | --------------------------------------------- |
 | R-type | **register-to-register**                      |
@@ -56,9 +61,40 @@ Unterteilung in:
 | x28-x31         | t3-t6             | weitere **temporäre** Register                        |
 
 
-## Privileged Instruktionen
+## RISC-V Privilege Levels
 - *unprivileged* Instruktionen: können von jeder auf dem Prozessor laufenden Software ausgeführt werden, greifen auf keine sensiblen System-Ressourcen zu
 - *privileged* Instruktionen: sollen nur vom OS oder Kernel ausgeführt werden, zum Verwalten von System-Ressourcen, auch zum Verwalten externer Geräte
+- in RISC-V werden 3 Privilege Levels verwendet:
+	- machine mode
+	- supervisor mode
+	- user mode
+
+### Machine Mode (M-Mode)
+- höchster Privilege, **uneingeschränkter Zugriff** auf alle Prozessor-Ressourcen und Systemfunktionen
+- Prozessor kann auf **alle Register**, **Memory Locations** und **Control Register** zugreifen und **jede Instruktion** ausführen
+
+### Supervisor Mode (S-Mode)
+- mittlerer (dazwischenliegender) Privilege-Mode
+- z.B. für OSs
+- eingeschränkter Zugriff auf bestimmte Ressourcen und Funktionen
+
+### User Mode (U-Mode)
+- niedrigster Privilege
+- eingeschränkter Zugriff auf Ressourcen und Funktionen, die von (der) Supervisor-Mode Software kontrolliert wird
 
 
-## Memory Model
+## Execution Environment
+- Execution Environment Interface (EEI) definiert:
+	- initialen Programmzustand
+	- Anzahl und Art der Harts (Hardware Threads) samt ihrer Privilege Modi
+	- Accessiblity und Attribute des Memory und I/O
+	- Verhalten aller legalen Instruktionen in jedem Hart
+	- Interrupt- und Exception-Handling
+
+
+## Memory
+- Byte-addressierbarer Adressraum von $2^{XLEN}$ Bytes
+- Speicher-*Wort*: 32 bits
+- zirkulärer Speicher, d.h. Byte an Adresse $2^{XLEN} - 1$ ist angrenzend zu Byte an Adresse 0
+- alle Adressberechnungen werden folglich modulo $2^{XLEN}$ durchgeführt
+
